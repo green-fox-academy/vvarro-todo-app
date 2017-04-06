@@ -2,6 +2,7 @@ public class Main {
   public static void main(String[] args) {
 
     ToDoApp toDoApp = new ToDoApp();
+    List list = new List();
 
     final String DESCR_NAME = "appDescription.txt";
     final String FILE_NAME = "list.csv";
@@ -25,5 +26,6 @@ public class Main {
       System.out.println("Try harder!");
     }
 
+    System.out.println(list.processData(List.readListFromFile(FILE_NAME)));
+    }
   }
-}
