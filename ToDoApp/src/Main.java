@@ -13,10 +13,7 @@ public class Main {
     List<String> description = readDescriptionFromFile();
     List<String> toDo = readToDoFromFile();
     LinkedHashMap<String, Boolean> toDoMap = processData(toDo);
-    System.out.println(toDo);
-    System.out.println(toDoMap);
     ToDoApp toDoApp = new ToDoApp();
-    toDoApp.writeOut((LinkedHashMap) toDoMap);
 
     //Kapcsolok
     if (args.length == 0) {
@@ -24,7 +21,7 @@ public class Main {
         System.out.println(description.get(i));
       }
     } else if (args[0].equals("-l") && args.length == 1) {
-      System.out.println("kiirom a listat");
+      toDoApp.writeOut((LinkedHashMap) toDoMap);
     } else if (args[0].equals("-a") && args.length == 3) {
       System.out.println("hozzaadok elemet");
     } else if (args[0].equals("-a") && args.length == 1) {
@@ -68,7 +65,7 @@ public class Main {
 
   //feldolgozas
   public static LinkedHashMap<String, Boolean> processData(List<String> toDo) {
-    LinkedHashMap<String,Boolean> toDoMap = new LinkedHashMap<>();
+    LinkedHashMap<String, Boolean> toDoMap = new LinkedHashMap<>();
     for (int i = 0; i < toDo.size(); i++) {
       String[] splittedLine = toDo.get(i).split(";");
       if (splittedLine[1].equals("done")) {
@@ -77,6 +74,6 @@ public class Main {
         toDoMap.put(splittedLine[0], false);
       }
     }
-   return toDoMap;
+    return toDoMap;
   }
 }
