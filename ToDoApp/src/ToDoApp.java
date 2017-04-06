@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class ToDoApp {
+public class ToDoApp{
 
   public ToDoApp() {
   }
@@ -19,5 +19,9 @@ public class ToDoApp {
         System.out.println(i + 1 + " - " + linked.getKey());
       }
     }
+  }
+
+  public void addNewTask(LinkedHashMap toDoMap, String[] args){
+    toDoMap.put(args[1],args[2]);
   }
 }
