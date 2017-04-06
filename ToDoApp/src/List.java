@@ -22,12 +22,17 @@ public class List {
     return list;
   }
 
-  Map<String, String> task = new HashMap<>();
+  Map<String, Boolean> task = new HashMap<>();
 
   public Map processData(java.util.List<String> list) {
     for (int i = 0; i < list.size(); i++) {
       String[] splittedLine = list.get(i).split(";");
-      task.put(splittedLine[0], splittedLine[1]);
+      if (splittedLine[1].equals("done")) {
+        task.put(splittedLine[0], true);
+      } else {
+        task.put(splittedLine[0], false);
+      }
+
     }
     return task;
   }
