@@ -1,25 +1,19 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ToDoApp {
 
   public ToDoApp() {
   }
 
-  public static java.util.List<String> readDescriptionFromFile(String DESCR_NAME) {
-    Path path = Paths.get(DESCR_NAME);
-    List<String> descr = null;
-
-    try {
-      descr = Files.readAllLines(path);
-    } catch (IOException e) {
-      e.printStackTrace();
+  public void writeOut(LinkedHashMap toDoMap) {
+    Set set = toDoMap.entrySet();
+    Iterator iterator = set.iterator();
+    for (int i = 0; i < toDoMap.size(); i++) {
+      Map.Entry linked = (Map.Entry)iterator.next();
+      System.out.println(i + 1 + ". " + linked.getKey());
     }
-    return descr;
   }
-
-
 }
