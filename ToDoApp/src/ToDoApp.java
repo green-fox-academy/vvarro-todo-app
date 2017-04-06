@@ -1,9 +1,9 @@
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
-public class ToDoApp{
+public class ToDoApp {
 
   public ToDoApp() {
   }
@@ -21,7 +21,24 @@ public class ToDoApp{
     }
   }
 
-  public void addNewTask(LinkedHashMap toDoMap, String[] args){
-    toDoMap.put(args[1],args[2]);
+  public void addNewTask(LinkedHashMap toDoMap, String[] args) {
+    toDoMap.put(args[2], false);
+  }
+
+  public String toFile(String[] args) {
+    String result = " ";
+    result = (args[1].toString().concat(";undone"));
+    return result;
+  }
+
+  public void writeToFile(String result, String FILE_NAME) {
+    try {
+      Writer output;
+      output = new BufferedWriter(new FileWriter(FILE_NAME,true));  //clears file every time
+      output.append(result);
+      output.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

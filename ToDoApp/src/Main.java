@@ -22,8 +22,8 @@ public class Main {
       }
     } else if (args[0].equals("-l") && args.length == 1) {
       toDoApp.writeOut((LinkedHashMap) toDoMap);
-    } else if (args[0].equals("-a") && args.length == 3) {
-      System.out.println("hozzaadok elemet");
+    } else if (args[0].equals("-a") && args.length == 2) {
+      toDoApp.writeToFile(toDoApp.toFile(args), FILE_NAME);
     } else if (args[0].equals("-a") && args.length == 1) {
       System.out.println("Unable to add: no task provided");
     } else if (args[0].equals("-r") && args.length == 1) {
