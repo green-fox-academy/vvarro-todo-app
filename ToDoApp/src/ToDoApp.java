@@ -34,12 +34,11 @@ public class ToDoApp extends Main {
       } else {
         result.add(linked.getKey() + ";undone" + "\n");
       }
-
     }
     try {
       Writer output;
       output = new BufferedWriter(new FileWriter(FILE_NAME));
-      for (String i : result){
+      for (String i : result) {
         output.write(String.valueOf(i));
       }
       output.close();
@@ -47,6 +46,10 @@ public class ToDoApp extends Main {
       e.printStackTrace();
     }
     System.out.println("ToDo list is updated!");
+  }
+
+  public void addNewTask(LinkedHashMap toDoMap, String[] args) {
+    toDoMap.put(args[2], false);
   }
 
   public String toFile(String[] args) {
@@ -67,12 +70,26 @@ public class ToDoApp extends Main {
     System.out.println("New ToDo task added to list!");
   }
 
-  public void removeTask(LinkedHashMap toDoMap, String[] args, String FILE_NAME) {
+  public void removeTask(LinkedHashMap toDoMap, String[] args) {
     if (toDoMap.size() < 3) {
       System.out.println("Unable to remove: too few tasks");
     } else {
-      toDoMap.remove(toDoMap.keySet().toArray()[Integer.parseInt(args[1])-1].toString());
+      toDoMap.remove(toDoMap.keySet().toArray()[Integer.parseInt(args[1]) - 1].toString());
       System.out.println("ToDo task removed!");
+    }
+  }
+
+  public void checkTask(LinkedHashMap toDoMap, String[] args) {
+    if (toDoMap.size() < 3) {
+      System.out.println("Unable to check: too few tasks");
+    } else if (toDoMap.values().toArray()[Integer.parseInt(args[1]) - 1].equals(false)) {
+      System.out.println(toDoMap.values().toArray()[Integer.parseInt(args[1]) - 1]);
+      toDoMap.put(toDoMap.keySet().toArray()[Integer.parseInt(args[1]) - 1], true);
+      System.out.println("ToDo task checked!");
+      System.out.println(toDoMap);
+    }
+    else {
+      System.out.println("The task is already done!");
     }
   }
 }
