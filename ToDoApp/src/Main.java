@@ -2,7 +2,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Main {
 
@@ -13,6 +15,7 @@ public class Main {
     List<String> description = readDescriptionFromFile();
     List<String> toDo = readToDoFromFile();
     LinkedHashMap<String, Boolean> toDoMap = processData(toDo);
+
     ToDoApp toDoApp = new ToDoApp();
 
     //Kapcsolok
@@ -21,13 +24,15 @@ public class Main {
         System.out.println(description.get(i));
       }
     } else if (args[0].equals("-l") && args.length == 1) {
-      toDoApp.writeOut((LinkedHashMap) toDoMap);
+      toDoApp.writeOut(toDoMap);
     } else if (args[0].equals("-a") && args.length == 2) {
-      toDoApp.writeToFile(toDoApp.toFile(args), FILE_NAME);
+      toDoApp.addToFile(toDoApp.toFile(args), FILE_NAME);
     } else if (args[0].equals("-a") && args.length == 1) {
       System.out.println("Unable to add: no task provided");
-    } else if (args[0].equals("-r") && args.length == 1) {
-      System.out.println("torlok egy elemet");
+    } else if (args[0].equals("-r") && args.length == 2) {
+      toDoApp.removeTask(toDoMap, args, FILE_NAME);
+      toDoApp.reWriteList(toDoMap, FILE_NAME);
+      System.out.println(toDoMap);
     } else if (args[0].equals("-c") && args.length == 1) {
       System.out.println("megcsinalok egy feladatot");
     } else {
@@ -35,7 +40,6 @@ public class Main {
     }
   }
 
-  //leiras beolvasasa
   private static List<String> readDescriptionFromFile() {
     Path path = Paths.get(DESCR_NAME);
     List<String> description;
@@ -49,8 +53,7 @@ public class Main {
     return description;
   }
 
-  //beolvasas
-  private static List<String> readToDoFromFile() {
+  public static List<String> readToDoFromFile() {
     Path path = Paths.get(FILE_NAME);
     List<String> toDo;
 
@@ -63,7 +66,6 @@ public class Main {
     return toDo;
   }
 
-  //feldolgozas
   public static LinkedHashMap<String, Boolean> processData(List<String> toDo) {
     LinkedHashMap<String, Boolean> toDoMap = new LinkedHashMap<>();
     for (int i = 0; i < toDo.size(); i++) {
