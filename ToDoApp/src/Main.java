@@ -26,7 +26,7 @@ public class Main {
     } else if (args[0].equals("-l") && args.length == 1) {
       toDoApp.writeOut(toDoMap);
     } else if (args[0].equals("-a") && args.length == 2) {
-      toDoApp.addNewTask(toDoMap,args);
+      toDoApp.addNewTask(toDoMap, args);
       toDoApp.addToFile(toDoApp.toFile(args), FILE_NAME);
     } else if (args[0].equals("-a") && args.length == 1) {
       System.out.println("Unable to add: no task provided");
@@ -35,9 +35,12 @@ public class Main {
       toDoApp.reWriteList(toDoMap, FILE_NAME);
     } else if (args[0].equals("-c") && args.length == 2) {
       toDoApp.checkTask(toDoMap, args);
-      toDoApp.reWriteList(toDoMap,FILE_NAME);
+      toDoApp.reWriteList(toDoMap, FILE_NAME);
     } else {
-      System.out.println("Try harder!");
+      System.out.println("Unsupported argument");
+      for (int i = 0; i < description.size(); i++) {
+        System.out.println(description.get(i));
+      }
     }
   }
 
