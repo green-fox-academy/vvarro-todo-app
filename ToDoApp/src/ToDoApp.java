@@ -17,8 +17,11 @@ public class ToDoApp extends Main {
       Iterator iterator = set.iterator();
       for (int i = 0; i < toDoMap.size(); i++) {
         Map.Entry linked = (Map.Entry) iterator.next();
-        System.out.println(i + 1 + " - " + linked.getKey());
-
+        if (linked.getValue().equals(true)) {
+          System.out.println(i+1 + " - [x] " + linked.getKey());
+        } else {
+          System.out.println(i+1 + " - [ ] " + linked.getKey());
+        }
       }
     }
   }

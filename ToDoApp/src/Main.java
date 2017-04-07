@@ -18,7 +18,6 @@ public class Main {
 
     ToDoApp toDoApp = new ToDoApp();
 
-    //Kapcsolok
     if (args.length == 0) {
       for (int i = 0; i < description.size(); i++) {
         System.out.println(description.get(i));
@@ -37,7 +36,7 @@ public class Main {
       toDoApp.checkTask(toDoMap, args);
       toDoApp.reWriteList(toDoMap, FILE_NAME);
     } else {
-      System.out.println("Unsupported argument");
+      System.out.println("Unsupported argument\n");
       for (int i = 0; i < description.size(); i++) {
         System.out.println(description.get(i));
       }
