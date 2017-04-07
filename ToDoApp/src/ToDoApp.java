@@ -1,7 +1,11 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ToDoApp {
 
@@ -35,7 +39,7 @@ public class ToDoApp {
     try {
       Writer output;
       output = new BufferedWriter(new FileWriter(FILE_NAME,true));  //clears file every time
-      output.append(result);
+      output.append("\n" + result);
       output.close();
     } catch (IOException e) {
       e.printStackTrace();

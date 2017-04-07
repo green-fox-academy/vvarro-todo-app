@@ -6,8 +6,8 @@ import java.util.*;
 
 public class Main {
 
-  private final static String DESCR_NAME = "appDescription.txt";
-  private final static String FILE_NAME = "list.csv";
+  private final static String DESCR_NAME = "ToDoApp/appDescription.txt";
+  private final static String FILE_NAME = "ToDoApp/list.csv";
 
   public static void main(String[] args) {
     List<String> description = readDescriptionFromFile();
